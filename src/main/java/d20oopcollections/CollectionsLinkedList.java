@@ -1,6 +1,13 @@
 package d20oopcollections;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class CollectionsLinkedList {
+    public static void main(String[] args) {
+
+
 /*
     LinkedList ve Collections Özet Notları
 1. Collections Nedir?
@@ -95,8 +102,117 @@ EXCEPTİON
             (Cevabı: LinkedList elemanlara node bağlantıları üzerinden erişir, index’e doğrudan erişemez.)*/
 
 
+    LinkedList<String> ll = new LinkedList<>();
+ll.add("Hasan");
+ll.add("Zeynep");
+ll.add("Ali");
+ll.add("Veli");
+        System.out.println(ll);//insertion order
+
+        LinkedList<String> ll1  = new LinkedList<>(Arrays.asList("Hasan" , "Zeynep",  "Ali",  "Veli "));
+        System.out.println(ll1);//[Hasan, Zeynep, Ali, Veli ]
+        ll1.add("Ayşe");
+        System.out.println(ll1);//[Hasan, Zeynep, Ali, Veli , Ayşe]
+        LinkedList<String> ll2  = new LinkedList<>(List.of("Hasan" , "Zeynep",  "Ali",  "Veli "));
+        System.out.println(ll2);//[Hasan, Zeynep, Ali, Veli ]
+ll2.add("Ayşe");
+        System.out.println(ll2);//[Hasan, Zeynep, Ali, Veli , Ayşe]
+
+        List<String> ll3  = Arrays.asList("Hasan" , "Zeynep",  "Ali",  "Veli ");//bunun elemanlarının da boyutu falan değiştirilemez ama ,
+        // set edilebilir yani varolan bir eleman başka bir elemanla değiştirilebilir
+      ll3.set(1,"Halil");
+        System.out.println(ll3);//[Hasan, Halil, Ali, Veli ]
+
+        List<String> ll4  = List.of("Hasan" , "Zeynep",  "Ali",  "Veli ");//bunun elemanlarına hiçbir şey yapılamaz
+
+//2- add(int index, E element); belirtilen konuma bir oge ekler
+//3- addFirst(E e): Listenin basina oge ekler
+//4- addLast(E e): Listenin sonuna bir öğe ekler.
+//5) remove(Object o): Belirtilen öğeyi listeden kaldırır ve boolean dondurur
+
+ boolean m1 = ll.remove("Ali");
+        System.out.println(ll);//[Hasan, Zeynep, Veli]
+        System.out.println(m1);//true
+
+        System.out.println("-----------------------------------");
+//6)removeFirstOccurrence() metodu
+// belirtilen bir öğeyi LinkedList içinde
+//bastan başlayarak arar ve bu öğeyi bulduğunda onu listeden kaldırır.
+//Eğer bu öğe birden fazla kez bulunuyorsa, en bastaki öğe kaldırılır.
+//Eğer belirtilen öğe listede bulunmuyorsa, herhangi bir değişiklik yapmaz ve liste aynı kalır.
+ll.add(1,"Veli");
+ll.removeFirstOccurrence("Veli");
+        System.out.println(ll);//[Hasan, Zeynep, Veli] ilk Veli gitti
+
+//8) peek() metodu, bir koleksiyonun ilk elemanına erişmek için kullanılır.
+// Bu metod, elemanı koleksiyondan kaldırmaz.
+// Bu metod, koleksiyon boşsa null dondurur
 
 
+    String s = ll.peek();
+        System.out.println(ll);//
+        System.out.println(s);//Hasan
+
+//9)poll() metodu, bir koleksiyonun başındaki elemanı alır ve koleksiyondan kaldırır.
+// Bu metod, koleksiyon boşsa null döndürür.
+
+        System.out.println(ll.poll());//Hasan
+        System.out.println(ll);//[Zeynep, Veli]
+        System.out.println("-------------------------------");
+//-------------------------
+//10) element() metodu, bir koleksiyonun başındaki elemanı alır, ancak elemanı koleksiyondan kaldırmaz.
+// Bu metod, koleksiyon boşsa NoSuchElementException istisnası atar. (peek() null dondurur)   PEEKLE AYNI ŞEYİ YAPAR SADECE LİST BOŞSA EXCEPTİON FIRLATIR PEEKTE NULL DÖNDÜRÜRDÜ
+// bir koleksiyonun boş olup olmadığını kontrol etmek için NoSuchElementException istisnasını kullanir
+
+        System.out.println(ll.element());
+        System.out.println(ll);
+
+//------------------------
+//11) pop() metodu, bir koleksiyonun ilk elemanını alır ve koleksiyondan kaldırır. POLLA AYNI ŞEYİ YAPAR EĞER BOŞSA EXCEPTİON FIRLATIR POPTA NULL
+// Bu metod, koleksiyon boşsa NoSuchElementException istisnası atar.(poll() null dondurur)
+        System.out.println(ll.pop());
+        System.out.println(ll);
+
+
+
+
+/*LinkedList Metotları Özet Tablosu
+Metot	Ne Yapar?	      Siler mi?	               Eşdeğeri / Notlar
+add(E e)	Liste sonuna eleman ekler	❌	addLast(e) ile aynı
+addFirst(E e)	Liste başına eleman ekler	❌	push(e) ile aynı
+addLast(E e)	Liste sonuna eleman ekler	❌	add(e) ile aynı
+push(E e)	Liste başına eleman ekler	❌	addFirst(e) ile aynı
+pop()	Liste başındaki elemanı alır ve siler	✅	removeFirst() ile aynı
+peek()	Liste başındaki elemanı gösterir, silmez	❌	Boşsa null döner
+poll()	Liste başındaki elemanı alır ve siler	✅	Boşsa null döner
+remove(Object o)	İlk eşleşen elemanı siler	✅	Boolean döndürür
+removeFirstOccurrence(Object o)	Baştan başlayarak ilk eşleşeni siler	✅	İlk bulduğu elemanı siler
+removeLastOccurrence(Object o)	Sondan başlayarak ilk eşleşeni siler	✅	İlk bulduğu elemanı siler
+getFirst()	İlk elemanı döndürür, silmez	❌	Boşsa NoSuchElementException
+getLast()	Son elemanı döndürür, silmez	❌	Boşsa NoSuchElementExcept
+
+
+
+LinkedList<String> list = new LinkedList<>();
+
+list.add("M");
+list.add("N");
+list.push("O");
+list.addFirst("P");
+list.addLast("Q");
+
+System.out.println(list.pop());
+list.removeFirstOccurrence("N");
+System.out.println(list.peek());
+list.removeLastOccurrence("M");
+System.out.println(list.poll());
+System.out.println(list);*/
+
+
+
+
+
+    }
 
 
 
