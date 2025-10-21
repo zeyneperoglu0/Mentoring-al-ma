@@ -236,6 +236,7 @@ override overload burda tip derken nasıl yani
         protected int b = 10;
         public int c = 20;
     }
+4. Abstract ve Override (Kod Yazma)
 
 
     Child sınıfından hangi alanlara direkt erişebilirsin?
@@ -243,6 +244,14 @@ override overload burda tip derken nasıl yani
         public int c = 20;
     Child sınıfının bir methodu üzerinden private alana nasıl erişebilirsin?
     getter setter
+
+
+3
+
+
+
+
+
 */
 
 
