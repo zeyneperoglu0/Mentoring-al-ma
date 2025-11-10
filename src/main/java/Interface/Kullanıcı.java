@@ -1,6 +1,6 @@
 package Interface;
 
-public interface Scanner {
+public interface Kullanıcı {
 
     void scan();
 

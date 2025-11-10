@@ -1,6 +1,6 @@
 package Interface;
 
-public class AllInOneDevice implements Scanner,Printer {
+public class AllInOneDevice implements Kullanıcı,Printer {
 
 
     @Override
@@ -15,7 +15,7 @@ public class AllInOneDevice implements Scanner,Printer {
 
     @Override
     public void info() {
-      Scanner.super.info();
+      Kullanıcı.super.info();
       Printer.super.info();
 
         System.out.println("AllInOneDevice info");
